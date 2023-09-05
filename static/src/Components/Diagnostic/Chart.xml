@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl.Chart" owl="1">
+     <link rel="stylesheet"  href="\_a_test_app\static\src\Components\Diagnostic\Diagnostic.scss"/>
+
+
+ 
+        <div id="Chart" class="Chart">   
+        <div class="mouseEventDiv">  
+      <span id="mousEvent" class="material-symbols-outlined">drag_handle</span>
+      
+      </div>
+
+        <!-- <button id="resetzoom" t-on-click="resetZoom" > Reset Zoom</button> -->
+             <canvas id="myChart"></canvas>
+             <canvas id="myChart2"></canvas>
+
+
+
+        </div>
+    </t>
+</templates>

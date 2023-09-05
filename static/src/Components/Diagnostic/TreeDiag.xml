@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl.TreeDiag" owl="1">
+     <link rel="stylesheet"  href="\_a_test_app\static\src\Components\Diagnostic\Diagnostic.scss"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+  <div class="treeContanair">
+  <div class="divButton">     
+  
+  
+  <span  id="DisplayTree" t-on-click="DisplayTree"  class="material-symbols-outlined">
+chevron_right
+</span>
+  
+</div>
+
+
+        <div  id="TreeDiag" class="TreeDiag">
+      
+             <input placeholder="Rechercher Vehicules ..." id="searchInputRef" class="inputSearch" t-ref="searchInputRef"  />
+            <div id="jstree" t-ref="jstree">  </div>
+
+
+        </div>
+        </div>
+    </t>
+</templates>

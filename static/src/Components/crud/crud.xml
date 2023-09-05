@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+<t t-name="owl.Crud" owl="1">
+ <link rel="stylesheet"  href="\_a_test_app\static\src\Components\test1\todolist.scss"/>
+
+    <div  class="h1div">
+
+   
+       <div >  
+       
+     
+
+
+
+<div>
+</div>
+
+
+         <!-- <div>   
+
+ <input class="inpinfo"  t-on-input="_updatename"  placeholder="name..." type="text" /> 
+ <input class="inpinfo" t-on-input="_updateValue"   placeholder="value..." type="number" /> 
+ <input class="inpinfo"  t-on-input="_updateValue2"  placeholder="value2..." type="number" /> 
+ <input class="inpinfo" t-on-input="_updateDescription"  placeholder="description..." type="text" /> 
+</div> -->
+
+            <div class='maptreeContainer'>   
+
+           <div class="buttonsAction">
+           <!-- <button  class="buttonAction" t-on-click="FetchData" id="test2"> display data</button>
+            <button  class="buttonAction" t-on-click="updateData" id="test3"> Update data</button>
+            <button  class="buttonAction" t-on-click="insertData" id="test4"> Post data</button> -->
+
+            <t t-call="owl.Tree"/>
+            <!-- <button  class="buttonAction" t-on-click="get_map_data" id="test6"> Display data from fleet</button> -->
+            </div>
+            <div  class='mapContainer' t-ref="mapContainer" ></div>
+
+
+
+
+
+
+   </div>
+</div>
+
+
+</t>
+   
+
+</templates>

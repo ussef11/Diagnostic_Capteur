@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl.Tree" owl="1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <link rel="stylesheet" href="D:\Odoo16\server\odoo\addons\_a_test_app\static\src\Components\Tree\Tree.scss" />
+ <script src="D:\Odoo16\server\odoo\addons\_a_test_app\static\src\Components\Tree\Tree.js"></script>
+        <!-- <div class="h1div"> -->
+       
+ <!-- 
+<div class="Tree_container">  -->
+<button class="buttonAction" t-on-click="shoetest">Show Tree</button>
+            <input placeholder="Rechercher Vehicules ..." id="searchInputRef" t-ref="searchInputRef"  />
+            <div id="jstree" t-ref="jstree">  </div>
+
+
+
+
+
+
+
+
+           
+           <!-- <div t-ref="container"></div> -->
+          
+
+ <!-- </div> -->
+        </div>
+    </t>
+</templates>

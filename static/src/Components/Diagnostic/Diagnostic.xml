@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl.Diagnostic" owl="1">
+     <link rel="stylesheet"  href="\_a_test_app\static\src\Components\Diagnostic\Diagnostic.scss"/>
+
+
+
+
+        <div class="Diagnostic"> 
+  <t t-call="owl.TreeDiag"/>
+  <div  class="chartMap">      
+   <div  class='mapContainer' t-ref="mapContainer" ></div><t t-call="owl.Chart"/>
+</div>
+
+        </div>
+        
+    </t>
+</templates>
