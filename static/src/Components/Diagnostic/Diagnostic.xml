@@ -11,7 +11,10 @@
   <div  class="chartMap">      
    <div  class='mapContainer' t-ref="mapContainer" ></div><t t-call="owl.Chart"/>
 </div>
-
+<div  style="
+    position: absolute;
+    right: 0%;
+" class="popUpContainer">    <t t-call="owl.PopUp"/></div>  
         </div>
         
     </t>

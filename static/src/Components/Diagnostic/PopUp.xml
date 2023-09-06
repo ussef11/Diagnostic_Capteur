@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl.PopUp" owl="1">
+     <link rel="stylesheet"  href="\_a_test_app\static\src\Components\Diagnostic\Diagnostic.scss"/>
+
+
+ 
+  <div  id="article"  class="article">
+<div class="rc-accordion-card">
+    <header  class="header">
+        <h2>ARTA30458</h2>
+        <span class="material-symbols-outlined">
+            <span  class="material-symbols-outlined">
+chevron_right
+</span>
+        </span>
+    </header>
+
+  
+    </div>
+
+
+  </div>
+        
+    </t>
+</templates>

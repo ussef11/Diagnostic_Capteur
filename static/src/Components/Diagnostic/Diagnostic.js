@@ -23,8 +23,11 @@ export class Diagnostic extends Component {
             position: null,
             mychart: null,
             displayTree: true,
-            height: 300 ,
+            height: 300,
+            number: 5,
         };
+
+        this.chartInstances = [];
 
         this.selectedNodes = [];
 
@@ -40,6 +43,11 @@ export class Diagnostic extends Component {
             const button = document.getElementById('mousEvent');
 
             button.addEventListener('mousedown', this.handler.bind(this));
+            button.addEventListener('touchstart', this.handler.bind(this));
+
+            const DisplayTree = document.getElementById('DisplayTree');
+            DisplayTree.addEventListener('mousedown', this.handlerTree.bind(this));
+            DisplayTree.addEventListener('touchstart', this.handlerTree.bind(this));
 
             this.initMap();
             this.Displaychart();
@@ -53,25 +61,89 @@ export class Diagnostic extends Component {
     }
 
     handler(mouseDownEvent) {
-        const startHeight = document.getElementById("Chart").offsetHeight;
-        const startPosition = { x: mouseDownEvent.pageX, y: mouseDownEvent.pageY };
-        
+        const startHeight = document.getElementById('Chart').offsetHeight;
+        const startPosition = {
+            x:
+                mouseDownEvent.pageX ||
+                (mouseDownEvent.touches && mouseDownEvent.touches[0].pageX),
+            y:
+                mouseDownEvent.pageY ||
+                (mouseDownEvent.touches && mouseDownEvent.touches[0].pageY),
+        };
+
         function onMouseMove(mouseMoveEvent) {
-            const newHeight = startHeight - (mouseMoveEvent.pageY - startPosition.y);
-            let Chart =document.getElementById("Chart")
+            const currentPosition = {
+                x:
+                    mouseMoveEvent.pageX ||
+                    (mouseMoveEvent.touches && mouseMoveEvent.touches[0].pageX),
+                y:
+                    mouseMoveEvent.pageY ||
+                    (mouseMoveEvent.touches && mouseMoveEvent.touches[0].pageY),
+            };
+
+            const newHeight = startHeight - (currentPosition.y - startPosition.y);
+            let Chart = document.getElementById('Chart');
             Chart.style.height = `${newHeight}px`;
-            Chart.style.minHeight = `${newHeight}px`;
-            // document.getElementById("mousEvent").style.background = "red";
-            console.log(newHeight)
+            // Chart.style.minHeight = `${newHeight}px`;
+            console.log(newHeight);
         }
-    
+
         function onMouseUp() {
             document.body.removeEventListener('mousemove', onMouseMove);
+            document.body.removeEventListener('touchmove', onMouseMove);
             document.body.removeEventListener('mouseup', onMouseUp);
+            document.body.removeEventListener('touchend', onMouseUp);
         }
-    
+
         document.body.addEventListener('mousemove', onMouseMove);
+        document.body.addEventListener('touchmove', onMouseMove, { passive: false });
         document.body.addEventListener('mouseup', onMouseUp, { once: true });
+        document.body.addEventListener('touchend', onMouseUp, { once: true });
+    }
+
+    handlerTree(mouseDownEvent) {
+        const startButtonTree = document.getElementById('DisplayTree').offsetTop;
+
+        const startPosition = {
+            x:
+                mouseDownEvent.pageX ||
+                (mouseDownEvent.touches && mouseDownEvent.touches[0].pageX),
+            y:
+                mouseDownEvent.pageY ||
+                (mouseDownEvent.touches && mouseDownEvent.touches[0].pageY),
+        };
+
+        function onMouseMove(mouseMoveEvent) {
+            const currentPosition = {
+                x:
+                    mouseMoveEvent.pageX ||
+                    (mouseMoveEvent.touches && mouseMoveEvent.touches[0].pageX),
+                y:
+                    mouseMoveEvent.pageY ||
+                    (mouseMoveEvent.touches && mouseMoveEvent.touches[0].pageY),
+            };
+
+            const newHeightButtonTree =
+                startButtonTree - (startPosition.y - currentPosition.y);
+
+            document.getElementById(
+                'DisplayTree'
+            ).style.top = `${newHeightButtonTree}px`;
+
+            // Chart.style.minHeight = `${newHeight}px`;
+        }
+
+        function onMouseUp() {
+            document.body.removeEventListener('mousemove', onMouseMove);
+            document.body.removeEventListener('touchmove', onMouseMove);
+            document.body.removeEventListener('mouseup', onMouseUp);
+            document.body.removeEventListener('touchend', onMouseUp);
+        }
+
+        document.body.addEventListener('mousemove', onMouseMove);
+        document.body.addEventListener('touchmove', onMouseMove, { passive: false });
+        document.body.addEventListener('mouseup', onMouseUp, { once: true });
+        document.body.addEventListener('touchend', onMouseUp, { once: true });
     }
 
     DisplayTree() {
@@ -3248,6 +3320,8 @@ export class Diagnostic extends Component {
                 ],
             },
             options: {
+           
+
                 responsive: true,
                 maintainAspectRatio: false,
                 title: {
@@ -3291,7 +3365,7 @@ export class Diagnostic extends Component {
                         zoom: {
                             speed: 0.05,
 
-                            drag: { animationDuration: 200 },
+                            drag: { enabled: true },
                             animation: {
                                 duration: 0,
                             },
@@ -3307,8 +3381,85 @@ export class Diagnostic extends Component {
                 },
             },
         };
+
+        var configline = {
+            onClick: this.barClick.bind(this),
+            type: 'line',
+            data: {
+                labels: xData, // Date Objects
+                datasets: [
+                    {
+                        label: 'dataset',
+                        data: yData,
+                        fill: false,
+                    },
+                ],
+            },
+            options: {
+            
+
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Chart.js Time Scale',
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            type: 'time',
+                            scaleLabel: {
+                                display: false,
+                                labelString: 'Date',
+                            },
+                            ticks: {
+                                major: { enabled: true },
+                                font: (context) => {
+                                    console.log(context.tick);
+                                },
+
+                                maxRotation: 0,
+                            },
+                        },
+                    ],
+                    yAxes: [
+                        {
+                            type: 'linear',
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'value',
+                            },
+                        },
+                    ],
+                },
+                plugins: {
+                    zoom: {
+                        pan: {
+                            enabled: true,
+                            mode: 'x',
+                        },
+                        zoom: {
+                            speed: 0.05,
+
+                            drag: { enabled: true },
+                            animation: {
+                                duration: 0,
+                            },
+                            wheel: {
+                                enabled: true,
+                            },
+                            pinch: {
+                                enabled: true,
+                            },
+                            mode: 'x',
+                        },
+                    },
+                },
+            },
+        };
+
         const chart = new window.Chart(ctx, config);
-        const chart2 = new window.Chart(ctx2, config);
+        const chart2 = new window.Chart(ctx2, configline);
 
         ctx.onclick = (evt) => {
             const res = chart.getElementsAtEventForMode(
@@ -3324,16 +3475,95 @@ export class Diagnostic extends Component {
 
             console.log(chart.data.labels[res[0].index]);
             console.log(chart.data.datasets[0].data[res[0].index]);
-
         };
 
-        
+        ctx2.onclick = (evt) => {
+            const res = chart.getElementsAtEventForMode(
+                evt,
+                'nearest',
+                { intersect: true },
+                true
+            );
+
+            if (res.length === 0) {
+                return;
+            }
+
+            console.log(chart.data.labels[res[0].index]);
+            console.log(chart.data.datasets[0].data[res[0].index]);
+        };
+        this.chartInstances.push(chart, chart2);
+
         chart.canvas.parentNode.style.height = '100px';
         chart2.canvas.parentNode.style.height = '100px';
         chart.canvas.parentNode.style.width = 100;
     }
-    resetZoom() {
-        document.getElementById('TreeDiag').style.display = 'none';
+
+    ZoomIn2() {
+        const chart = this.getChartInstance2('myChart');
+        chart.zoom(1.1);
+    }
+
+    ZoomIn() {
+        const chart11 = this.getChartInstance2('myChart');
+
+        const ChartsIds = ['myChart', 'myChart2'];
+        const charts = this.getChartInstances(ChartsIds);
+
+        charts.forEach((chart) => {
+            chart.zoom(1.1);
+            chart.canvas.dispatchEvent(new MouseEvent('click')); // Simulate a click event on the canvas
+
+            chart.update();
+        });
+
+        chart11.update();
+    }
+
+    ZoomOut() {
+        const chart11 = this.getChartInstance2('myChart');
+
+        const ChartsIds = ['myChart', 'myChart2'];
+        const charts = this.getChartInstances(ChartsIds);
+
+        charts.forEach((chart) => {
+            chart.zoom(0.9);
+            chart.canvas.dispatchEvent(new MouseEvent('click')); // Simulate a click event on the canvas
+
+            chart.update();
+        });
+
+        chart11.update();
+    }
+
+    ResetZoom() {
+        const chart11 = this.getChartInstance2('myChart');
+
+        const ChartsIds = ['myChart', 'myChart2'];
+        const charts = this.getChartInstances(ChartsIds);
+
+        charts.forEach((chart) => {
+            chart.resetZoom();
+
+            chart.canvas.dispatchEvent(new MouseEvent('click')); // Simulate a click event on the canvas
+
+            chart.update();
+        });
+
+        chart11.update();
+    }
+
+    getChartInstances(chartIds) {
+        console.log(
+            this.chartInstances.filter((chart) => chartIds.includes(chart.canvas.id))
+        );
+        return this.chartInstances.filter((chart) =>
+            chartIds.includes(chart.canvas.id)
+        );
+    }
+
+    getChartInstance2(chartId) {
+        return this.chartInstances.find((chart) => chart.canvas.id === chartId);
     }
 }
 

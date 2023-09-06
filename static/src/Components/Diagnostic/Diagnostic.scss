@@ -7,16 +7,342 @@
 
 
 .mapContainer{
-    height: 94vh;
+    height: 93vh !important;
     width: 100%;
 }
 
 
-.TreeDiag{
-    position: relative;
-    bottom: 292px;
- 
+.popUpContainer{
+    position: absolute;
+    right: 0%;
 }
+
+
+//popUp
+
+
+  
+
+  
+article {
+    background: transparent;
+    width: 381px;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 44em;
+    overflow: auto;
+  
+    z-index: 10;
+    /* width: 100%; */
+    height: 100%;
+    /* position: absolute; */
+    top: 0;
+    left: 41vw;
+    margin-left: auto;
+  }
+  
+  article .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 10px 0 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #494964;
+    margin-bottom: 10px;
+    color: #f8f8f8;
+  }
+  
+  article .header.active {
+    background: #6366f1;
+  }
+  
+  article .header.active span {
+    rotate: -180deg;
+  }
+  
+  .header h2 {
+    margin: 0 !important;
+    font-size: 16px!important;
+    font-weight: 500!important;
+    color: #f8f8f8!important;
+  }
+  
+  article p {
+    padding: 0px 15px 8px;
+    line-height: 1;
+    font-size: 13px;
+    text-align: left;
+  }
+  
+  article span {
+    transition: 0.3s;
+  }
+  
+  .collapse {
+    filter: blur(0);
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    border-radius: 10px;
+    background: #ffffffdb;
+    position: relative;
+    top: -8px;
+  }
+  
+  .collapse.show {
+    height: auto;
+  }
+  
+  .divone {
+    margin: 7px;
+    
+    border: 2px solid rgb(255, 0, 0);
+  
+  }
+  .divone p{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    top: 5px;
+  
+  }
+
+  .divInfoContent{
+    display: flex;
+  }
+
+  .divtitleInfo{
+    margin-left: auto; 
+    margin-right: 0;
+  }
+
+
+  .divButtoninfo{
+
+    margin-left: 1px;
+    height: 37px;
+    display: flex;
+    border: none;
+  }
+
+  .divButtoninfo button{
+    border-color: #bfbfbfbd;
+    width: 90px;
+    margin-right: -8px;
+    border-bottom: 0.5px;
+    margin-left: 10px;
+    background-color: transparent;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    font-weight: 600;
+
+    font-family: system-ui;
+    font-size: 17px;
+  }
+
+  .displayBackButton{
+    color: white;
+    font-family: inherit;
+    height: 34px;
+    margin-right: 20px;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    background: #4ea4ff;
+    font-weight: 500;
+    width: 170px;
+  }
+
+  .displayBackButtonl{
+    color: white;
+    font-family: inherit;
+    height: 34px;
+    margin-right: 7px;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    background: #4ea4ff;
+    font-weight: 500;
+    width: 29px;
+
+  }
+
+  .divInfotag{
+    overflow: auto;
+    padding: 11px;
+    display: flex;
+    /* height: 100px; */
+    background-color: gray;
+    margin-top: 20px;
+    border-radius: 20px;
+    margin: 14px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .divInfotag label{
+    color :white
+
+  }
+
+  .tablenfo {
+    border-collapse: collapse;
+    width: 100%;
+    height: 91px;
+  }
+  
+  .tablenfo  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+
+  }
+  .tablenfo  tr th {
+   border: 1px solid #dddddd;
+    text-align: center;
+   
+    background-color: #2036ff;
+    color:#fff;
+  }
+  
+  .tablenfo  tr:hover {
+    background-color: #dddddd;
+    cursor: pointer;
+  }
+  
+  .content td, .content th {
+      border-top: 1px solid transparent;
+     
+  }
+  .divInfocercuit{
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    margin-left: 14px;
+  }
+  .divInfocercuit button{
+    width: 41px;
+    height: 37px;
+    margin-right: 11px;
+    background-color:#2036ff;
+    border-radius: 7px;
+  }
+  .divInfocercuit button:hover{
+    
+    background-color:#0014c6;
+
+  }
+  .divInfocercuit button span{
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    position: relative;
+    top: 2px;
+  }
+
+  .divInfocercuittow{
+    margin-top: 5px;
+    margin-bottom: 8px;
+    margin-left: 14px;
+    text-align: right;
+  }
+  .divInfocercuittow button{
+    width: 44px;
+    height: 27px;
+    margin-right: 4px;
+    background-color: #2036ff;
+    border-radius: 7px;
+    border: none;
+  }
+  .divInfocercuittow button span{
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+    top: 2px;
+  }
+
+  .probar{
+    padding: 8px 24px 6px 11px;
+  }
+
+  .labelBar{
+    color: #ffffff;
+    font-weight: 700;
+        color: #ffffff;
+    font-weight: 700;
+    position: relative;
+    top: -19px;
+    left: -121px;}
+
+.lblBar{
+  display: none;
+}
+  .containerBar{
+
+      background: rgb(206 206 206)!important;
+      border-radius: 14px !important;
+
+  }
+
+  .containerBar div{
+    height: 29px !important;
+    /* width: 100%!important; */
+    background: rgb(19, 54, 250)!important;
+    transition: width 1s ease-in-out 0s!important;
+    border-radius: 14px !important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center !important;
+  }
+
+  .numSpeed{
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0;
+    position: relative;
+    top: 5px;
+    color:  #ffffff;
+
+  
+  }
+
+  .buttonspeed{
+    margin-bottom: 6px;
+    text-align: center;
+    background-color: #0029ffed;
+    justify-content: center;
+    display: flex;
+    padding: 2px
+  }
+
+  .buttonspeed span{
+   
+    color: white !important;
+    font-size: 19px!important;
+    font-weight: 700!important;
+    position: relative!important;
+    top: 2px!important;
+  }
+
+
+
+
+
+
+
+
+//END POPUP
+
+
+
+
+
 
 
 // Tree 
@@ -120,18 +446,18 @@
     width: 7px;
   }
   
-  /* Track */
+
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
   
-  /* Handle */
+  
   ::-webkit-scrollbar-thumb {
     background: #91caff;
     border-radius: 19px;
   }
   
-  /* Handle on hover */
+
   ::-webkit-scrollbar-thumb:hover {
     background: #0079ff;
   }
@@ -142,14 +468,16 @@
     z-index: 1;
   }
 
-  .divButton span{
+  #DisplayTree{
   
     height: 49px;
     border-radius: 0px 5px 5px 0px;
   
     width: 17px;
     background-color: #71639e;
-    margin-top: 300px;
+    position: relative;
+
+    top: 300px;
     align-items: center;
     text-align: center;
     display: flex;
@@ -199,4 +527,35 @@
 
 canvas{
     max-height: 200px !important;
+}
+
+#mousEvent:hover{
+    border-radius: 0px 0 5px 5px;
+
+background-color: #71639e3d;
+}
+
+#mousEvent{
+    width: 100%;
+}
+
+.divZoomButton{
+    text-align: right;
+    margin-right: 13px;
+}
+
+.divZoomButton span{
+    padding-right: 8px;
+    cursor: pointer;
+
+}
+
+span{
+  
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none
 }

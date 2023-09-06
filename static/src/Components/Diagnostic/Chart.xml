@@ -11,7 +11,22 @@
       
       </div>
 
-        <!-- <button id="resetzoom" t-on-click="resetZoom" > Reset Zoom</button> -->
+      <div class="divZoomButton"> 
+ <span  id="ZoomIn" t-on-click="ZoomIn"  class="material-symbols-outlined">
+zoom_in
+</span>
+        
+
+<span  t-on-click="ZoomOut"  class="material-symbols-outlined">
+zoom_out
+</span>
+
+<span t-on-click="ResetZoom" class="material-symbols-outlined">
+restart_alt
+</span>
+          </div>
+
+
              <canvas id="myChart"></canvas>
              <canvas id="myChart2"></canvas>
 
