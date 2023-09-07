@@ -232,7 +232,40 @@ export class Diagnostic extends Component {
                 zoom: 8,
             });
 
-            let position = [];
+            let position = [
+    [
+        {
+            "lat": "35.720505",
+            "lng": "-5.739123",
+            "display_name": "Audi/A1/0111111"
+        },
+        {
+            "lat": "35.720505",
+            "lng": "-5.739150",
+            "display_name": "Opel/Astra/1-ACK-205"
+        },
+        {
+            "lat": "35.720505",
+            "lng": "-5.739160",
+            "display_name": "Audi/A1/1-AUD-001"
+        },
+        {
+            "lat": "35.720505",
+            "lng": "-5.739163",
+            "display_name": "Bmw/Serie 1/1-BMW-001"
+        },
+        {
+            "lat": "35.720505",
+            "lng": "-5.739155",
+            "display_name": "Mercedes/Class A/1-MER-001"
+        },
+        {
+            "lat": "35.720505",
+            "lng": "-5.739129",
+            "display_name": "Audi/A4/fgfgs"
+        }
+    
+]];
 
             position.push(this.state.position);
 
